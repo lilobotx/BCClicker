@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Statistical Site</title>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="utf-8"/>
+    <link rel="shortcut icon" href="cook.png" type="image/x-icon">
+</head>
+<body class="main">
+    <header>
+        <div class="navigation_operation">
+            <nav>
+                <ul>
+                  <li><a href="index.html">Main</a></li>
+                  <li><a href="About.html">About</a></li>
+                </ul>
+        </nav>
+        </div>
+    </header>
+    <h1>Brain Cell Clicker</h1>
+    <h2 id="output2"></h2>
+    <h1 id="output"></h1>
+    <button id="knapp"></button>
+    <p id="ugc"></p>
+    <div class="bott"><button id="autoclicker">Neural Regeneration</button><button id="boost">New Super Clicker Boost</button><button id="BCI">Rapid Expansion</button></div>
+
+    <p id="statistics"></p>
+    <footer>
+        <p>How to play: Having negative braincells will kill you.</p>
+    <div>
+    <P>"We will be the lightning that rides the storm." - Genji Shimada.</P>
+    </div>
+    </footer>
+        <script>
+        let utText = 0;
+        let booster = 0;
+
+        const stats = document.getElementById('statistics');
+        const text2 = document.getElementById('output2');
+        const text = document.getElementById('output');
+        const knapp = document.getElementById('knapp');
+        const autoclicker = document.getElementById('autoclicker');
+        const ugc = document.getElementById('ugc');
+        const boost = document.getElementById('boost');
+        const BCI = document.getElementById('BCI');
+
+        knapp.addEventListener('click', function (event){
+            utText += 1 + booster;
+        });
+
+        boost.addEventListener('click', function (event){
+            if (utText >= Math.round(Math.pow((20*(1+booster)), 1.2))){
+            utText -= Math.round(Math.pow((20*(1+booster)), 1.2));
+            booster++;
+        }});
+
+        BCI.addEventListener('click', function (event){
+            if (utText >= Math.round(Math.pow((100*(1+intrest)), 2))){
+            utText -= Math.round(Math.pow((100*(1+intrest)), 2));
+            intrest++;
+        }});
+
+        autoclicker.addEventListener('click', function (event){
+        if (utText >= Math.round(Math.pow((10*(1+NR)), 1.2))){
+        const Neural = setInterval(function() {
+            utText += (1 + booster);
+        }, 1000);
+            utText -= Math.round(Math.pow(10*(1+NR), 1.2));
+            NR++;
+        }});
+
+        let countdown = 1000;
+        let NR = 0;
+        let BR = 0;
+        let Cant = 30;
+        let intrest = 0;
+
+        const Count = setInterval(function() {
+            Cant -= 1;
+            if (intrest > 0){
+                utText += Math.round(utText*(intrest/100))
+            }
+        }, 1000);
+
+
+        const timerId = setInterval(function() {
+            if (utText < 0) {
+                utText = -99999999999999999999;
+                text.textContent = "Congratulations!!! You are Brain Dead!";
+            }
+            else {
+            text.textContent = utText + " Brain Cells";
+            text2.textContent = "You will receive " + Math.pow(2,(BR+5)) + " Brain Damage In " + Cant;
+            stats.textContent = "Upgrades: +" + NR + " Clicks Per Second | " + (1  +booster) + " Brain Cells per Click | +" + intrest + "% Brain Cell Interest per second";
+            ugc.textContent = "Cost: Neural Regeneration " + Math.round(Math.pow((10*(1+NR)), 1.2)) + " | New Super Clicker Boost " + Math.round(Math.pow((20*(1+booster)), 1.2)) + " | Rapid Expansion " + Math.round(Math.pow((100*(1+intrest)), 2));
+            }
+        }, 50);
+
+            const Warning = setInterval(function() {
+            if (utText < Math.pow(2,(BR+5))) {
+                text2.style.color = "red";
+            }
+            else {
+            text2.style.color = "white";
+            }
+        }, 50);
+
+        const brainrot = setInterval(function() {
+            Cant = 30;
+            utText -= Math.pow(2,(BR+5));
+            BR++;
+        }, 30000);
+        
+    </script>
+</body>
+</html>
